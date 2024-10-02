@@ -1,7 +1,5 @@
 package com.example.auth.config;
 
-import com.example.auth.domain.user.Role;
-import com.example.auth.domain.user.UserEntity;
 import com.example.auth.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
@@ -34,6 +32,7 @@ import java.util.List;
 public class SecurityConfig {
     private final UserService userService;
     private final JwtAuthFilter jwtAuthFilter;
+
     @Bean
     @SneakyThrows
     public SecurityFilterChain filterChain(

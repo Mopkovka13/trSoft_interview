@@ -1,9 +1,9 @@
 package com.example.auth.web.controller;
 
 import com.example.auth.service.AuthService;
-import com.example.auth.web.dto.JwtAuthResponse;
-import com.example.auth.web.dto.SignInRequest;
-import com.example.auth.web.dto.SignUpRequest;
+import com.example.auth.web.dto.auth.JwtAuthResponse;
+import com.example.auth.web.dto.auth.SignInRequest;
+import com.example.auth.web.dto.auth.SignUpRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;

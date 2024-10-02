@@ -31,6 +31,18 @@ public class UserEntity implements UserDetails {
     @Column(name = "role", nullable = false)
     private Role role;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "personal_info_id")
+    private PersonalInfo personalInfo;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "contact_info_id")
+    private ContactInfo contactInfo;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_photo_id")
+    private UserPhoto userPhoto;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));

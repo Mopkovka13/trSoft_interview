@@ -1,7 +1,6 @@
 package com.example.auth.config;
 
-import com.example.auth.domain.user.Role;
-import com.example.auth.domain.user.UserEntity;
+import com.example.auth.domain.user.*;
 import com.example.auth.service.UserService;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
@@ -25,6 +24,9 @@ public class DataInitializer {
                 .username("admin")
                 .password(passwordEncoder.encode("admin"))
                 .role(Role.ROLE_USER)
+                .personalInfo(new PersonalInfo())
+                .contactInfo(new ContactInfo())
+                .userPhoto(new UserPhoto())
                 .build();
 
         userService.createUser(user);

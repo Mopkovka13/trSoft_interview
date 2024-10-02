@@ -3,6 +3,7 @@ package com.example.auth.service;
 import com.example.auth.domain.user.UserEntity;
 import com.example.auth.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -23,7 +24,7 @@ public class UserService implements UserDetailsService {
         return save(user);
     }
 
-    private UserEntity save(UserEntity user) {
+    public UserEntity save(UserEntity user) {
         return userRepository.save(user);
     }
 
@@ -34,7 +35,7 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
-    public UserEntity getByUsername(
+    private UserEntity getByUsername(
             String username
     ) {
         return userRepository.findByUsername(username)
@@ -43,5 +44,12 @@ public class UserService implements UserDetailsService {
 
     public UserDetailsService userDetailsService() {
         return this::getByUsername;
+    }
+
+    public UserEntity getCurrentUser() {
+        var user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        return userRepository.findByUsername(user.getUsername())
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 }
