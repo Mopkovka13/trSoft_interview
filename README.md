@@ -20,6 +20,8 @@ docker-compose up --build
 Start application ;)
 
 
+Test with Postman:
+[Файл для импорта коллекции](https://github.com/Mopkovka13/trSoft_interview/blob/main/trSoft_Interview.json)
 
 
 ### To Do:
